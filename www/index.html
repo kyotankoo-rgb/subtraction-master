@@ -587,6 +587,17 @@
 </div>
 
 <script>
+// ===== 진동 (Capacitor Haptics) =====
+async function vibrate() {
+  try {
+    if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Haptics) {
+      await window.Capacitor.Plugins.Haptics.vibrate({ duration: 100 });
+    } else if (navigator.vibrate) {
+      navigator.vibrate(100);
+    }
+  } catch (e) { /* 진동 미지원 */ }
+}
+
 // ===== 다국어 =====
 const LANG = {
   ko: {
@@ -1946,6 +1957,7 @@ function updateTimer() {
   if (remaining <= 0) {
     gameRunning = false;
     playWrong();
+    vibrate();
     if (isPracticeMode) {
       practiceWrong++;
       setTimeout(nextQuestion, 600);
@@ -2189,6 +2201,7 @@ function selectAnswer(idx) {
     setTimeout(nextQuestion, 500);
   } else {
     playWrong();
+    vibrate();
     wrongAnswerIdx = idx;
     wrongAnswerSelected = selected;
     if (isPracticeMode) {
@@ -2364,6 +2377,7 @@ document.addEventListener('visibilitychange', function() {
       if (!answered) {
         if (isPracticeMode) {
           playWrong();
+    vibrate();
           practiceWrong++;
           setTimeout(nextQuestion, 600);
         } else {
