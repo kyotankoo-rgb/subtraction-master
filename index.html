@@ -25,9 +25,9 @@
     }
     .goal-celebration .celebration-text {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-size: 48px; font-weight: 900; color: #ffd700; text-shadow: 0 0 20px #ffd700, 0 0 40px #ff8c00;
-      animation: celebrateText 2s ease-out forwards; opacity: 0;
-      text-align: center; width: 90%; max-width: 400px;
+      font-size: 42px; font-weight: 900; color: #93c5fd; text-shadow: 0 0 20px #93c5fd, 0 0 40px #3b82f6;
+      animation: celebrateText 2.3s ease-out forwards; opacity: 0;
+      text-align: center; width: 100%; display: flex; align-items: center; justify-content: center;
     }
     @keyframes celebrateText {
       0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
@@ -330,6 +330,70 @@
       background: linear-gradient(135deg, #00ff88, #00cc66);
       color: #000; font-weight: 700; border: none; font-size: 14px;
     }
+  
+    /* 버튼 내 아이콘 크기 조절 */
+    .btn-goal img, .btn-rank img, .btn-home img, .btn-share img, .btn-watch-ad img, .btn-remove-ads img { width: 24px; height: 24px; vertical-align: -5px; }
+    .best-record img, .goal-display img { width: 22px; height: 22px; vertical-align: -4px; }
+    .goal-result img { width: 26px; height: 26px; vertical-align: -5px; }
+    .result-best img { width: 28px; height: 28px; vertical-align: -6px; }
+  
+    
+
+  
+    
+
+  
+    
+
+  
+    /* 버튼 아이콘 절대 위치로 텍스트 센터 유지 */
+    .btn-home, .btn-share, .btn-rank, .btn-board {
+      position: relative !important;
+      padding-left: 40px !important;
+      padding-right: 40px !important;
+    }
+    .btn-home img, .btn-share img, .btn-rank img, .btn-board img {
+      position: absolute !important;
+      left: 15px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 20px !important;
+      height: 20px !important;
+    }
+    /* 결과 화면 이모지 크기 복원 */
+    .result-emoji img { width: 100px !important; height: 100px !important; }
+
+  
+    /* 커스텀 아이콘 */
+    .icon { width: 1.6em; height: 1.6em; vertical-align: -0.35em; display: inline-block; margin-right: 6px; }
+    .icon-lg { width: 60px; height: 60px; }
+    .icon-md { width: 40px; height: 40px; }
+    .icon-sm { width: 24px; height: 24px; }
+    .icon-xs { width: 18px; height: 18px; }
+    .result-emoji img { width: 100px; height: 100px; }
+    .ad-popup-icon img { width: 100px; height: 100px; }
+    .celebration-text img { width: 48px; height: 48px; vertical-align: middle; }
+    .celebration-reward img { width: 32px; height: 32px; vertical-align: middle; }
+    /* 버튼 내 아이콘 크기 조절 */
+    .btn-goal img, .btn-rank img, .btn-home img, .btn-share img, .btn-watch-ad img, .btn-remove-ads img { width: 24px; height: 24px; vertical-align: -5px; }
+    .best-record img, .goal-display img { width: 22px; height: 22px; vertical-align: -4px; }
+    .goal-result img { width: 26px; height: 26px; vertical-align: -5px; }
+    .result-best img { width: 28px; height: 28px; vertical-align: -6px; }
+    /* 버튼 아이콘 절대 위치로 텍스트 센터 유지 */
+    .btn-home, .btn-share, .btn-rank, .btn-board {
+      position: relative !important;
+      padding-left: 40px !important;
+      padding-right: 40px !important;
+    }
+    .btn-home img, .btn-share img, .btn-rank img, .btn-board img {
+      position: absolute !important;
+      left: 15px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 20px !important;
+      height: 20px !important;
+    }
+
   </style>
 </head>
 <body>
@@ -354,16 +418,16 @@
   <div class="title-icon">−</div>
   <div id="titleText" class="title-text">빼기 마스터</div>
   <div id="titleSub" class="title-sub">10초 안에 암산하라!</div>
-  <div id="bestRecord" class="best-record hidden">🏆 <span id="bestLabel">최고 기록</span>: <span id="bestName"></span> <span id="bestScore">0</span><span id="bestPts">점</span></div>
+  <div id="bestRecord" class="best-record hidden"><img src="icon-record.png" class="icon"> <span id="bestLabel">최고 기록</span>: <span id="bestName"></span> <span id="bestScore">0</span><span id="bestPts">점</span></div>
   <div id="goalDisplay" class="goal-display hidden">
-    <div id="goalTarget" class="goal-target">🎯 아빠 이기기 (450점)</div>
-    <div id="goalReward" class="goal-reward">🎁 보상: 아이스크림</div>
+    <div id="goalTarget" class="goal-target"><img src="icon-target.png" class="icon"> 아빠 이기기 (450점)</div>
+    <div id="goalReward" class="goal-reward"><img src="icon-reward.png" class="icon"> 보상: 아이스크림</div>
   </div>
   <button id="btnStart" class="btn-start" onclick="initAudio(); isPracticeMode = false; showScreen('name')">게임 시작</button>
   <button id="btnPractice" class="btn-practice" onclick="startPractice()">연습 모드</button>
-  <button id="btnRankTitle" class="btn-rank" onclick="showLeaderboard()">🏆 랭킹 보기</button>
+  <button id="btnRankTitle" class="btn-rank" onclick="showLeaderboard()"><img src="icon-record.png" class="icon"> 랭킹 보기</button>
   <div class="bottom-buttons">
-    <button id="btnGoal" class="btn-goal" onclick="showGoalModal()">🎁 목표 설정</button>
+    <button id="btnGoal" class="btn-goal" onclick="showGoalModal()"><img src="icon-reward.png" class="icon"> 목표 설정</button>
     <button id="btnHow" class="btn-how" onclick="showHowToPlay()">게임 방법</button>
   </div>
 </div>
@@ -371,7 +435,7 @@
 <!-- 게임 방법 모달 -->
 <div id="modal-how" class="modal-overlay hidden" onclick="closeHowToPlay()">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <div id="modalTitle" class="modal-title">🎮 게임 방법</div>
+    <div id="modalTitle" class="modal-title"><img src="icon-game.png" class="icon"> 게임 방법</div>
     <div id="modalText" class="modal-text"></div>
     <button id="modalClose" class="modal-close" onclick="closeHowToPlay()">확인</button>
   </div>
@@ -380,7 +444,7 @@
 <!-- 목표 설정 모달 -->
 <div id="modal-goal" class="modal-overlay hidden" onclick="closeGoalModal()">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <div id="goalModalTitle" class="modal-title">🎁 목표 설정</div>
+    <div id="goalModalTitle" class="modal-title"><img src="icon-reward.png" class="icon"> 목표 설정</div>
     <div class="goal-form">
       <label id="goalTypeLabel" class="goal-label">목표 유형</label>
       <select id="goalType" class="goal-select" onchange="toggleGoalType()">
@@ -406,7 +470,7 @@
         <input type="number" id="targetScore" class="goal-input" min="1" max="999" placeholder="예: 500">
       </div>
       
-      <label id="rewardLabel" class="goal-label">🎁 보상</label>
+      <label id="rewardLabel" class="goal-label"><img src="icon-reward.png" class="icon"> 보상</label>
       <input type="text" id="rewardInput" class="goal-input" maxlength="30">
       
       <div class="goal-buttons">
@@ -437,7 +501,7 @@
   <h2 id="nameLabel" class="name-label">이름을 입력하세요</h2>
   <input type="text" id="nameInput" class="name-input" maxlength="10" placeholder="">
   <button id="btnGo" class="btn-go" disabled onclick="startGame()">시작하기</button>
-  <button id="btnHomeName" class="btn-home" onclick="showScreen('title')">🏠 홈으로</button>
+  <button id="btnHomeName" class="btn-home" onclick="showScreen('title')"><img src="icon-home.png" class="icon"> 홈으로</button>
 </div>
 
 <!-- 라운드 전환 화면 -->
@@ -480,32 +544,32 @@
 
 <!-- 결과 화면 -->
 <div id="screen-result" class="container hidden">
-  <div id="resultEmoji" class="result-emoji">🎉</div>
+  <div id="resultEmoji" class="result-emoji"><img src="icon-victory.png" class="icon"></div>
   <div id="resultTitle" class="result-title win">축하합니다!</div>
   <div style="color:#888"><span id="resultName">플레이어</span><span id="resultNameSuffix">님의 점수</span></div>
   <div id="resultScore" class="result-score">300점</div>
-  <div id="resultBest" class="result-best hidden">🎉 새로운 최고 기록!</div>
+  <div id="resultBest" class="result-best hidden"><img src="icon-victory.png" class="icon"> 새로운 최고 기록!</div>
   <div id="resultStats" class="result-stats">정답: 30/30 | 정답률: 100%</div>
   
   <div id="goalResult" class="goal-result hidden">
-    <div id="goalResultTitle" class="goal-result-title">🎉 목표 달성!</div>
+    <div id="goalResultTitle" class="goal-result-title"><img src="icon-victory.png" class="icon"> 목표<br>달성!</div>
     <div id="goalResultName" class="goal-result-name"></div>
-    <div id="goalResultReward" class="goal-result-reward">🎁 아이스크림</div>
+    <div id="goalResultReward" class="goal-result-reward"><img src="icon-reward.png" class="icon"> 아이스크림</div>
     <div id="goalResultSub" class="goal-result-sub">보상을 받으세요!</div>
-    <button id="btnShare" class="btn-share hidden" onclick="shareResult()">📤 공유하기</button>
+    <button id="btnShare" class="btn-share hidden" onclick="shareResult()"><img src="icon-share.png" class="icon"> 공유하기</button>
   </div>
   
   <div id="resultMsg" class="result-msg"></div>
   <div>
     <button id="btnRetry" class="btn-retry" onclick="restartGame()">다시 하기</button>
-    <button id="btnRankResult" class="btn-board" onclick="showLeaderboard()">🏆 랭킹</button>
+    <button id="btnRankResult" class="btn-board" onclick="showLeaderboard()"><img src="icon-record.png" class="icon"> 랭킹</button>
   </div>
-  <button id="btnHomeResult" class="btn-home" onclick="showScreen('title')">🏠 홈으로</button>
+  <button id="btnHomeResult" class="btn-home" onclick="showScreen('title')"><img src="icon-home.png" class="icon"> 홈으로</button>
 </div>
 
 <!-- 리더보드 -->
 <div id="screen-board" class="container hidden">
-  <h2 id="boardTitle" style="margin-bottom:30px">🏆 랭킹</h2>
+  <h2 id="boardTitle" style="margin-bottom:30px"><img src="icon-record.png" class="icon"> 랭킹</h2>
   <div id="boardList" class="board-list"></div>
   <button id="btnBack" class="btn-back" onclick="showScreen('title')">돌아가기</button>
 </div>
@@ -513,16 +577,27 @@
 <!-- 광고 팝업 -->
 <div id="ad-popup" class="ad-popup-overlay hidden">
   <div class="ad-popup">
-    <div class="ad-popup-icon">🎮</div>
+    <div class="ad-popup-icon"><img src="icon-game.png" class="icon"></div>
     <div id="adPopupTitle" class="ad-popup-title">계속 플레이하기</div>
-    <div id="adPopupMsg" class="ad-popup-msg">3회 플레이를 완료했습니다!<br>광고를 시청하거나 광고 없는 버전을 구매하세요.</div>
+    <div id="adPopupMsg" class="ad-popup-msg">3회 플레이를 완료했습니다!<br>광고를 시청하거나<br>광고 없는 버전을 구매하세요.</div>
     <div id="adPopupCount" class="ad-popup-count"></div>
-    <button id="btnWatchAd" class="btn-watch-ad" onclick="watchAd()">📺 광고 보고 계속하기</button>
-    <button id="btnRemoveAds" class="btn-remove-ads" onclick="removeAds()">💎 광고 제거 (구매)</button>
+    <button id="btnWatchAd" class="btn-watch-ad" onclick="watchAd()"><img src="icon-tv.png" class="icon"> 광고 보고 계속하기</button>
+    <button id="btnRemoveAds" class="btn-remove-ads" onclick="removeAds()"><img src="icon-diamond.png" class="icon"> 광고 제거 (구매)</button>
   </div>
 </div>
 
 <script>
+// ===== 진동 (Capacitor Haptics) =====
+async function vibrate() {
+  try {
+    if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Haptics) {
+      await window.Capacitor.Plugins.Haptics.vibrate({ duration: 100 });
+    } else if (navigator.vibrate) {
+      navigator.vibrate(100);
+    }
+  } catch (e) { /* 진동 미지원 */ }
+}
+
 // ===== 다국어 =====
 const LANG = {
   ko: {
@@ -533,7 +608,7 @@ const LANG = {
     start: '게임 시작',
     howTo: '게임 방법',
     ranking: '랭킹 보기',
-    goal: '🎁 목표 설정',
+    goal: '<img src="icon-reward.png" class="icon"> 목표 설정',
     enterName: '이름을 입력하세요',
     namePlaceholder: '이름',
     go: '시작하기',
@@ -544,24 +619,24 @@ const LANG = {
     congrats: '축하합니다!',
     gameOver: '게임 오버',
     yourScore: '님의 점수',
-    newBest: '🎉 새로운 최고 기록!',
+    newBest: '<img src="icon-victory.png" class="icon"> 새로운 최고 기록!',
     correct: '정답',
     accuracy: '정답률',
     retry: '다시 하기',
     back: '돌아가기',
     noRecords: '아직 기록이 없습니다',
-    modalTitle: '🎮 게임 방법',
+    modalTitle: '<img src="icon-game.png" class="icon"> 게임 방법',
     modalText: `<strong>📌 규칙</strong><br>• 3라운드, 각 라운드 10문제<br>• 라운드가 올라갈수록 어려워져요!<br>• 틀리거나 시간 초과 시 게임 오버<br><br><strong>📊 라운드별 난이도</strong><br>• 1라운드: 3~9 빼기 (100에서)<br>• 2라운드: 11~19 빼기 (100에서)<br>• 3라운드: 21~29 빼기 (200에서)<br><br><strong>⏱️ 시간 보너스</strong><br>• <span class="gold">2초 이내: +20점</span><br>• 4초 이내: +15점<br>• 그 외: +10점`,
     modalClose: '확인',
     msg1: '🔥 전설의 암산왕!',
-    msg2: '⭐ 놀라운 실력!',
+    msg2: '<img src="icon-goal.png" class="icon"> 놀라운 실력!',
     msg3: '👏 대단해요!',
     msg4: '👍 잘했어요!',
     r1: '−3~9 | 100에서 시작',
     r2: '−11~19 | 100에서 시작',
     r3: '−21~29 | 200에서 시작',
     // 목표 설정
-    goalTitle: '🎁 목표 설정',
+    goalTitle: '<img src="icon-reward.png" class="icon"> 목표 설정',
     goalType: '목표 유형',
     goalScore: '목표 점수 달성',
     goalBeat: '누군가 이기기',
@@ -569,33 +644,33 @@ const LANG = {
     targetName: '이길 사람',
     targetNamePh: '예: 아빠',
     theirScore: '그 사람 점수',
-    reward: '🎁 보상',
+    reward: '<img src="icon-reward.png" class="icon"> 보상',
     rewardPh: '예: 아이스크림, 장난감...',
     saveGoal: '저장',
     deleteGoal: '삭제',
-    currentGoal: '🎯 목표',
+    currentGoal: ' 목표',
     beatGoal: '{name} 이기기 ({score}점)',
     scoreGoal: '{score}점 달성',
     rewardLabel: '보상: {reward}',
-    goalAchieved: '🎉 목표 달성!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: '보상을 받으세요!',
-    goalNotYet: '😢 아쉬워요!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> 아쉬워요!',
     tryAgain: '조금만 더 노력해봐요!',
     needed: '필요: {score}점',
     // 부활
-    home: '🏠 홈으로',
+    home: '<img src="icon-home.png" class="icon"> 홈으로',
     practice: '연습 모드',
     practiceResult: '연습 결과',
     practiceCorrect: '정답',
     practiceWrong: '오답',
     quit: '그만두기',
     continue: '계속하기',
-    share: '📤 공유하기',
-    shareMsg: '🎉 {name}님이 빼기 마스터에서 {score}점으로 목표를 달성했어요! 보상: {reward}',
+    share: '<img src="icon-share.png" class="icon"> 공유하기',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name}님이 빼기 마스터에서 {score}점으로 목표를 달성했어요! 보상: {reward}',
     adPopupTitle: '계속 플레이하기',
-    adPopupMsg: '3회 플레이를 완료했습니다!<br>광고를 시청하거나 광고 없는 버전을 구매하세요.',
-    watchAd: '📺 광고 보고 계속하기',
-    removeAds: '💎 광고 제거 (구매)',
+    adPopupMsg: '3회 플레이를 완료했습니다!<br>광고를 시청하거나<br>광고 없는 버전을 구매하세요.',
+    watchAd: '<img src="icon-tv.png" class="icon"> 광고 보고 계속하기',
+    removeAds: '<img src="icon-diamond.png" class="icon"> 광고 제거 (구매)',
     adFree: '광고 없음',
   },
   en: {
@@ -606,7 +681,7 @@ const LANG = {
     start: 'Start Game',
     howTo: 'How to Play',
     ranking: 'Ranking',
-    goal: '🎁 Set Goal',
+    goal: '<img src="icon-reward.png" class="icon"> Set Goal',
     enterName: 'Enter your name',
     namePlaceholder: 'Name',
     go: 'Start',
@@ -617,23 +692,23 @@ const LANG = {
     congrats: 'Congratulations!',
     gameOver: 'Game Over',
     yourScore: "'s Score",
-    newBest: '🎉 New Best Score!',
+    newBest: '<img src="icon-victory.png" class="icon"> New Best Score!',
     correct: 'Correct',
     accuracy: 'Accuracy',
     retry: 'Retry',
     back: 'Back',
     noRecords: 'No records yet',
-    modalTitle: '🎮 How to Play',
+    modalTitle: '<img src="icon-game.png" class="icon"> How to Play',
     modalText: `<strong>📌 Rules</strong><br>• 3 rounds, 10 questions each<br>• Gets harder each round!<br>• Game over if wrong or time out<br><br><strong>📊 Difficulty by Round</strong><br>• Round 1: Subtract 3-9 (from 100)<br>• Round 2: Subtract 11-19 (from 100)<br>• Round 3: Subtract 21-29 (from 200)<br><br><strong>⏱️ Time Bonus</strong><br>• <span class="gold">Within 2s: +20pts</span><br>• Within 4s: +15pts<br>• Otherwise: +10pts`,
     modalClose: 'OK',
     msg1: '🔥 Legendary!',
-    msg2: '⭐ Amazing!',
+    msg2: '<img src="icon-goal.png" class="icon"> Amazing!',
     msg3: '👏 Great job!',
     msg4: '👍 Good!',
     r1: '−3~9 | Start from 100',
     r2: '−11~19 | Start from 100',
     r3: '−21~29 | Start from 200',
-    goalTitle: '🎁 Set Goal',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Set Goal',
     goalType: 'Goal Type',
     goalScore: 'Reach Score',
     goalBeat: 'Beat Someone',
@@ -641,32 +716,32 @@ const LANG = {
     targetName: 'Who to Beat',
     targetNamePh: 'e.g. Dad',
     theirScore: 'Their Score',
-    reward: '🎁 Reward',
+    reward: '<img src="icon-reward.png" class="icon"> Reward',
     rewardPh: 'e.g. Ice cream, toy...',
     saveGoal: 'Save',
     deleteGoal: 'Delete',
-    currentGoal: '🎯 Goal',
+    currentGoal: ' Goal',
     beatGoal: 'Beat {name} ({score}pts)',
     scoreGoal: 'Reach {score}pts',
     rewardLabel: 'Reward: {reward}',
-    goalAchieved: '🎉 Goal Achieved!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Claim your reward!',
-    goalNotYet: '😢 Not yet!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Not yet!',
     tryAgain: 'Try again!',
     needed: 'Need: {score}pts',
-    home: '🏠 Home',
+    home: '<img src="icon-home.png" class="icon"> Home',
     practice: 'Practice Mode',
     practiceResult: 'Practice Result',
     practiceCorrect: 'Correct',
     practiceWrong: 'Wrong',
     quit: 'Quit',
     continue: 'Continue',
-    share: '📤 Share',
-    shareMsg: '🎉 {name} achieved the goal with {score}pts in Subtraction Master! Reward: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Share',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} achieved the goal with {score}pts in Subtraction Master! Reward: {reward}',
     adPopupTitle: 'Continue Playing',
-    adPopupMsg: 'You\'ve completed 3 plays!<br>Watch an ad or purchase ad-free version.',
-    watchAd: '📺 Watch Ad to Continue',
-    removeAds: '💎 Remove Ads (Purchase)',
+    adPopupMsg: 'You\'ve completed 3 plays!<br>Watch an ad or<br>purchase ad-free version.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Watch Ad to Continue',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Remove Ads (Purchase)',
     adFree: 'Ad-Free',
   },
   zh: {
@@ -677,7 +752,7 @@ const LANG = {
     start: '开始游戏',
     howTo: '游戏规则',
     ranking: '排行榜',
-    goal: '🎁 设定目标',
+    goal: '<img src="icon-reward.png" class="icon"> 设定目标',
     enterName: '请输入名字',
     namePlaceholder: '名字',
     go: '开始',
@@ -688,23 +763,23 @@ const LANG = {
     congrats: '恭喜你!',
     gameOver: '游戏结束',
     yourScore: '的分数',
-    newBest: '🎉 新纪录!',
+    newBest: '<img src="icon-victory.png" class="icon"> 新纪录!',
     correct: '正确',
     accuracy: '正确率',
     retry: '再玩一次',
     back: '返回',
     noRecords: '暂无记录',
-    modalTitle: '🎮 游戏规则',
+    modalTitle: '<img src="icon-game.png" class="icon"> 游戏规则',
     modalText: `<strong>📌 规则</strong><br>• 3回合，每回合10题<br>• 难度逐回合增加!<br>• 答错或超时则游戏结束<br><br><strong>📊 回合难度</strong><br>• 第1回合: 减3-9 (从100开始)<br>• 第2回合: 减11-19 (从100开始)<br>• 第3回合: 减21-29 (从200开始)<br><br><strong>⏱️ 时间奖励</strong><br>• <span class="gold">2秒内: +20分</span><br>• 4秒内: +15分<br>• 其他: +10分`,
     modalClose: '确定',
     msg1: '🔥 传奇心算王!',
-    msg2: '⭐ 太厉害了!',
+    msg2: '<img src="icon-goal.png" class="icon"> 太厉害了!',
     msg3: '👏 很棒!',
     msg4: '👍 不错!',
     r1: '−3~9 | 从100开始',
     r2: '−11~19 | 从100开始',
     r3: '−21~29 | 从200开始',
-    goalTitle: '🎁 设定目标',
+    goalTitle: '<img src="icon-reward.png" class="icon"> 设定目标',
     goalType: '目标类型',
     goalScore: '达到分数',
     goalBeat: '打败某人',
@@ -712,32 +787,32 @@ const LANG = {
     targetName: '要打败的人',
     targetNamePh: '例如: 爸爸',
     theirScore: '他们的分数',
-    reward: '🎁 奖励',
+    reward: '<img src="icon-reward.png" class="icon"> 奖励',
     rewardPh: '例如: 冰淇淋, 玩具...',
     saveGoal: '保存',
     deleteGoal: '删除',
-    currentGoal: '🎯 目标',
+    currentGoal: ' 目标',
     beatGoal: '打败 {name} ({score}分)',
     scoreGoal: '达到 {score}分',
     rewardLabel: '奖励: {reward}',
-    goalAchieved: '🎉 目标达成!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: '领取你的奖励吧!',
-    goalNotYet: '😢 还差一点!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> 还差一点!',
     tryAgain: '再努力一下!',
     needed: '需要: {score}分',
-    home: '🏠 首页',
+    home: '<img src="icon-home.png" class="icon"> 首页',
     practice: '练习模式',
     practiceResult: '练习结果',
     practiceCorrect: '正确',
     practiceWrong: '错误',
     quit: '退出',
     continue: '继续',
-    share: '📤 分享',
-    shareMsg: '🎉 {name}在减法大师中以{score}分达成目标！奖励：{reward}',
+    share: '<img src="icon-share.png" class="icon"> 分享',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name}在减法大师中以{score}分达成目标！奖励：{reward}',
     adPopupTitle: '继续游戏',
     adPopupMsg: '您已完成3次游戏！<br>观看广告或购买无广告版本。',
-    watchAd: '📺 看广告继续',
-    removeAds: '💎 移除广告 (购买)',
+    watchAd: '<img src="icon-tv.png" class="icon"> 看广告继续',
+    removeAds: '<img src="icon-diamond.png" class="icon"> 移除广告 (购买)',
     adFree: '无广告',
   },
   ja: {
@@ -748,7 +823,7 @@ const LANG = {
     start: 'ゲーム開始',
     howTo: '遊び方',
     ranking: 'ランキング',
-    goal: '🎁 目標設定',
+    goal: '<img src="icon-reward.png" class="icon"> 目標設定',
     enterName: '名前を入力',
     namePlaceholder: '名前',
     go: 'スタート',
@@ -759,23 +834,23 @@ const LANG = {
     congrats: 'おめでとう!',
     gameOver: 'ゲームオーバー',
     yourScore: 'のスコア',
-    newBest: '🎉 新記録!',
+    newBest: '<img src="icon-victory.png" class="icon"> 新記録!',
     correct: '正解',
     accuracy: '正解率',
     retry: 'もう一度',
     back: '戻る',
     noRecords: '記録がありません',
-    modalTitle: '🎮 遊び方',
+    modalTitle: '<img src="icon-game.png" class="icon"> 遊び方',
     modalText: `<strong>📌 ルール</strong><br>• 3ラウンド、各10問<br>• ラウンドが上がると難しくなる!<br>• 間違いまたは時間切れでゲームオーバー<br><br><strong>📊 ラウンド別難易度</strong><br>• ラウンド1: 3-9を引く (100から)<br>• ラウンド2: 11-19を引く (100から)<br>• ラウンド3: 21-29を引く (200から)<br><br><strong>⏱️ タイムボーナス</strong><br>• <span class="gold">2秒以内: +20点</span><br>• 4秒以内: +15点<br>• その他: +10点`,
     modalClose: 'OK',
     msg1: '🔥 伝説の暗算王!',
-    msg2: '⭐ すごい!',
+    msg2: '<img src="icon-goal.png" class="icon"> すごい!',
     msg3: '👏 素晴らしい!',
     msg4: '👍 いいね!',
     r1: '−3~9 | 100から',
     r2: '−11~19 | 100から',
     r3: '−21~29 | 200から',
-    goalTitle: '🎁 目標設定',
+    goalTitle: '<img src="icon-reward.png" class="icon"> 目標設定',
     goalType: '目標タイプ',
     goalScore: 'スコア達成',
     goalBeat: '誰かに勝つ',
@@ -783,32 +858,32 @@ const LANG = {
     targetName: '勝つ相手',
     targetNamePh: '例: パパ',
     theirScore: '相手のスコア',
-    reward: '🎁 ご褒美',
+    reward: '<img src="icon-reward.png" class="icon"> ご褒美',
     rewardPh: '例: アイス, おもちゃ...',
     saveGoal: '保存',
     deleteGoal: '削除',
-    currentGoal: '🎯 目標',
+    currentGoal: ' 目標',
     beatGoal: '{name}に勝つ ({score}点)',
     scoreGoal: '{score}点達成',
     rewardLabel: 'ご褒美: {reward}',
-    goalAchieved: '🎉 目標達成!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'ご褒美をもらおう!',
-    goalNotYet: '😢 もう少し!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> もう少し!',
     tryAgain: 'もう一回頑張ろう!',
     needed: '必要: {score}点',
-    home: '🏠 ホーム',
+    home: '<img src="icon-home.png" class="icon"> ホーム',
     practice: '練習モード',
     practiceResult: '練習結果',
     practiceCorrect: '正解',
     practiceWrong: '不正解',
     quit: 'やめる',
     continue: '続ける',
-    share: '📤 共有',
-    shareMsg: '🎉 {name}さんが引き算マスターで{score}点で目標達成！ご褒美：{reward}',
+    share: '<img src="icon-share.png" class="icon"> 共有',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name}さんが引き算マスターで{score}点で目標達成！ご褒美：{reward}',
     adPopupTitle: 'プレイを続ける',
-    adPopupMsg: '3回プレイしました！<br>広告を見るか、広告なし版を購入してください。',
-    watchAd: '📺 広告を見て続ける',
-    removeAds: '💎 広告を削除 (購入)',
+    adPopupMsg: '3回プレイしました！<br>広告を見るか、<br>広告なし版を購入してください。',
+    watchAd: '<img src="icon-tv.png" class="icon"> 広告を見て続ける',
+    removeAds: '<img src="icon-diamond.png" class="icon"> 広告を削除 (購入)',
     adFree: '広告なし',
   },
   vi: {
@@ -819,7 +894,7 @@ const LANG = {
     start: 'Bắt đầu',
     howTo: 'Hướng dẫn',
     ranking: 'Xếp hạng',
-    goal: '🎁 Đặt mục tiêu',
+    goal: '<img src="icon-reward.png" class="icon"> Đặt mục tiêu',
     enterName: 'Nhập tên của bạn',
     namePlaceholder: 'Tên',
     go: 'Chơi',
@@ -830,23 +905,23 @@ const LANG = {
     congrats: 'Chúc mừng!',
     gameOver: 'Kết thúc',
     yourScore: ' - Điểm',
-    newBest: '🎉 Kỷ lục mới!',
+    newBest: '<img src="icon-victory.png" class="icon"> Kỷ lục mới!',
     correct: 'Đúng',
     accuracy: 'Độ chính xác',
     retry: 'Chơi lại',
     back: 'Quay lại',
     noRecords: 'Chưa có kỷ lục',
-    modalTitle: '🎮 Hướng dẫn',
+    modalTitle: '<img src="icon-game.png" class="icon"> Hướng dẫn',
     modalText: `<strong>📌 Luật chơi</strong><br>• 3 vòng, mỗi vòng 10 câu<br>• Vòng sau khó hơn!<br>• Sai hoặc hết giờ sẽ thua<br><br><strong>📊 Độ khó theo vòng</strong><br>• Vòng 1: Trừ 3-9 (từ 100)<br>• Vòng 2: Trừ 11-19 (từ 100)<br>• Vòng 3: Trừ 21-29 (từ 200)<br><br><strong>⏱️ Thưởng thời gian</strong><br>• <span class="gold">Trong 2s: +20đ</span><br>• Trong 4s: +15đ<br>• Còn lại: +10đ`,
     modalClose: 'OK',
     msg1: '🔥 Huyền thoại!',
-    msg2: '⭐ Tuyệt vời!',
+    msg2: '<img src="icon-goal.png" class="icon"> Tuyệt vời!',
     msg3: '👏 Giỏi lắm!',
     msg4: '👍 Tốt!',
     r1: '−3~9 | Từ 100',
     r2: '−11~19 | Từ 100',
     r3: '−21~29 | Từ 200',
-    goalTitle: '🎁 Đặt mục tiêu',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Đặt mục tiêu',
     goalType: 'Loại mục tiêu',
     goalScore: 'Đạt điểm',
     goalBeat: 'Đánh bại ai đó',
@@ -854,32 +929,32 @@ const LANG = {
     targetName: 'Người cần thắng',
     targetNamePh: 'VD: Bố',
     theirScore: 'Điểm của họ',
-    reward: '🎁 Phần thưởng',
+    reward: '<img src="icon-reward.png" class="icon"> Phần thưởng',
     rewardPh: 'VD: Kem, đồ chơi...',
     saveGoal: 'Lưu',
     deleteGoal: 'Xóa',
-    currentGoal: '🎯 Mục tiêu',
+    currentGoal: ' Mục tiêu',
     beatGoal: 'Thắng {name} ({score}đ)',
     scoreGoal: 'Đạt {score}đ',
     rewardLabel: 'Thưởng: {reward}',
-    goalAchieved: '🎉 Đạt mục tiêu!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Nhận thưởng nào!',
-    goalNotYet: '😢 Chưa được!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Chưa được!',
     tryAgain: 'Cố gắng thêm nhé!',
     needed: 'Cần: {score}đ',
-    home: '🏠 Trang chủ',
+    home: '<img src="icon-home.png" class="icon"> Trang chủ',
     practice: 'Chế độ luyện tập',
     practiceResult: 'Kết quả luyện tập',
     practiceCorrect: 'Đúng',
     practiceWrong: 'Sai',
     quit: 'Thoát',
     continue: 'Tiếp tục',
-    share: '📤 Chia sẻ',
-    shareMsg: '🎉 {name} đã đạt mục tiêu với {score} điểm trong Subtraction Master! Phần thưởng: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Chia sẻ',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} đã đạt mục tiêu với {score} điểm trong Subtraction Master! Phần thưởng: {reward}',
     adPopupTitle: 'Tiếp tục chơi',
-    adPopupMsg: 'Bạn đã chơi 3 lần!<br>Xem quảng cáo hoặc mua bản không quảng cáo.',
-    watchAd: '📺 Xem quảng cáo để tiếp tục',
-    removeAds: '💎 Xóa quảng cáo (mua)',
+    adPopupMsg: 'Bạn đã chơi 3 lần!<br>Xem quảng cáo hoặc<br>mua bản không quảng cáo.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Xem quảng cáo để tiếp tục',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Xóa quảng cáo (mua)',
     adFree: 'Không quảng cáo',
   },
   es: {
@@ -890,7 +965,7 @@ const LANG = {
     start: 'Iniciar Juego',
     howTo: 'Cómo Jugar',
     ranking: 'Ranking',
-    goal: '🎁 Meta',
+    goal: '<img src="icon-reward.png" class="icon"> Meta',
     enterName: 'Ingresa tu nombre',
     namePlaceholder: 'Nombre',
     go: 'Comenzar',
@@ -901,23 +976,23 @@ const LANG = {
     congrats: '¡Felicidades!',
     gameOver: 'Fin del Juego',
     yourScore: ' - Puntuación',
-    newBest: '🎉 ¡Nuevo Récord!',
+    newBest: '<img src="icon-victory.png" class="icon"> ¡Nuevo Récord!',
     correct: 'Correctas',
     accuracy: 'Precisión',
     retry: 'Reintentar',
     back: 'Volver',
     noRecords: 'Sin récords aún',
-    modalTitle: '🎮 Cómo Jugar',
+    modalTitle: '<img src="icon-game.png" class="icon"> Cómo Jugar',
     modalText: `<strong>📌 Reglas</strong><br>• 3 rondas, 10 preguntas cada una<br>• ¡Cada ronda es más difícil!<br>• Error o tiempo agotado = fin del juego<br><br><strong>📊 Dificultad por Ronda</strong><br>• Ronda 1: Restar 3-9 (desde 100)<br>• Ronda 2: Restar 11-19 (desde 100)<br>• Ronda 3: Restar 21-29 (desde 200)<br><br><strong>⏱️ Bonificación por Tiempo</strong><br>• <span class="gold">En 2s: +20pts</span><br>• En 4s: +15pts<br>• Otro: +10pts`,
     modalClose: 'OK',
     msg1: '🔥 ¡Legendario!',
-    msg2: '⭐ ¡Increíble!',
+    msg2: '<img src="icon-goal.png" class="icon"> ¡Increíble!',
     msg3: '👏 ¡Muy bien!',
     msg4: '👍 ¡Bien!',
     r1: '−3~9 | Desde 100',
     r2: '−11~19 | Desde 100',
     r3: '−21~29 | Desde 200',
-    goalTitle: '🎁 Establecer Meta',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Establecer Meta',
     goalType: 'Tipo de Meta',
     goalScore: 'Alcanzar Puntos',
     goalBeat: 'Vencer a Alguien',
@@ -925,32 +1000,32 @@ const LANG = {
     targetName: 'A Quién Vencer',
     targetNamePh: 'Ej: Papá',
     theirScore: 'Su Puntuación',
-    reward: '🎁 Premio',
+    reward: '<img src="icon-reward.png" class="icon"> Premio',
     rewardPh: 'Ej: Helado, juguete...',
     saveGoal: 'Guardar',
     deleteGoal: 'Eliminar',
-    currentGoal: '🎯 Meta',
+    currentGoal: ' Meta',
     beatGoal: 'Vencer a {name} ({score}pts)',
     scoreGoal: 'Alcanzar {score}pts',
     rewardLabel: 'Premio: {reward}',
-    goalAchieved: '🎉 ¡Meta Lograda!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: '¡Reclama tu premio!',
-    goalNotYet: '😢 ¡Casi!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> ¡Casi!',
     tryAgain: '¡Inténtalo de nuevo!',
     needed: 'Necesitas: {score}pts',
-    home: '🏠 Inicio',
+    home: '<img src="icon-home.png" class="icon"> Inicio',
     practice: 'Modo Práctica',
     practiceResult: 'Resultado de Práctica',
     practiceCorrect: 'Correctas',
     practiceWrong: 'Incorrectas',
     quit: 'Salir',
     continue: 'Continuar',
-    share: '📤 Compartir',
-    shareMsg: '🎉 ¡{name} logró la meta con {score}pts en Subtraction Master! Recompensa: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Compartir',
+    shareMsg: '<img src="icon-victory.png" class="icon"> ¡{name} logró la meta con {score}pts en Subtraction Master! Recompensa: {reward}',
     adPopupTitle: 'Continuar Jugando',
-    adPopupMsg: '¡Has jugado 3 veces!<br>Mira un anuncio o compra la versión sin anuncios.',
-    watchAd: '📺 Ver anuncio para continuar',
-    removeAds: '💎 Quitar anuncios (comprar)',
+    adPopupMsg: '¡Has jugado 3 veces!<br>Mira un anuncio o<br>compra la versión sin anuncios.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Ver anuncio para continuar',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Quitar anuncios (comprar)',
     adFree: 'Sin anuncios',
   },
   fr: {
@@ -961,7 +1036,7 @@ const LANG = {
     start: 'Commencer',
     howTo: 'Comment Jouer',
     ranking: 'Classement',
-    goal: '🎁 Objectif',
+    goal: '<img src="icon-reward.png" class="icon"> Objectif',
     enterName: 'Entrez votre nom',
     namePlaceholder: 'Nom',
     go: 'Jouer',
@@ -972,23 +1047,23 @@ const LANG = {
     congrats: 'Félicitations!',
     gameOver: 'Fin de Partie',
     yourScore: ' - Score',
-    newBest: '🎉 Nouveau Record!',
+    newBest: '<img src="icon-victory.png" class="icon"> Nouveau Record!',
     correct: 'Correct',
     accuracy: 'Précision',
     retry: 'Rejouer',
     back: 'Retour',
     noRecords: 'Pas encore de records',
-    modalTitle: '🎮 Comment Jouer',
+    modalTitle: '<img src="icon-game.png" class="icon"> Comment Jouer',
     modalText: `<strong>📌 Règles</strong><br>• 3 tours, 10 questions chacun<br>• Chaque tour est plus difficile!<br>• Erreur ou temps écoulé = fin de partie<br><br><strong>📊 Difficulté par Tour</strong><br>• Tour 1: Soustraire 3-9 (depuis 100)<br>• Tour 2: Soustraire 11-19 (depuis 100)<br>• Tour 3: Soustraire 21-29 (depuis 200)<br><br><strong>⏱️ Bonus de Temps</strong><br>• <span class="gold">En 2s: +20pts</span><br>• En 4s: +15pts<br>• Autre: +10pts`,
     modalClose: 'OK',
     msg1: '🔥 Légendaire!',
-    msg2: '⭐ Incroyable!',
+    msg2: '<img src="icon-goal.png" class="icon"> Incroyable!',
     msg3: '👏 Très bien!',
     msg4: '👍 Bien!',
     r1: '−3~9 | Depuis 100',
     r2: '−11~19 | Depuis 100',
     r3: '−21~29 | Depuis 200',
-    goalTitle: '🎁 Définir Objectif',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Définir Objectif',
     goalType: "Type d'Objectif",
     goalScore: 'Atteindre Score',
     goalBeat: 'Battre Quelqu\'un',
@@ -996,32 +1071,32 @@ const LANG = {
     targetName: 'Qui Battre',
     targetNamePh: 'Ex: Papa',
     theirScore: 'Leur Score',
-    reward: '🎁 Récompense',
+    reward: '<img src="icon-reward.png" class="icon"> Récompense',
     rewardPh: 'Ex: Glace, jouet...',
     saveGoal: 'Sauver',
     deleteGoal: 'Supprimer',
-    currentGoal: '🎯 Objectif',
+    currentGoal: ' Objectif',
     beatGoal: 'Battre {name} ({score}pts)',
     scoreGoal: 'Atteindre {score}pts',
     rewardLabel: 'Récompense: {reward}',
-    goalAchieved: '🎉 Objectif Atteint!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Réclamez votre récompense!',
-    goalNotYet: '😢 Presque!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Presque!',
     tryAgain: 'Réessayez!',
     needed: 'Besoin: {score}pts',
-    home: '🏠 Accueil',
+    home: '<img src="icon-home.png" class="icon"> Accueil',
     practice: 'Mode Entraînement',
     practiceResult: 'Résultat de l\'Entraînement',
     practiceCorrect: 'Correct',
     practiceWrong: 'Incorrect',
     quit: 'Quitter',
     continue: 'Continuer',
-    share: '📤 Partager',
-    shareMsg: '🎉 {name} a atteint l\'objectif avec {score}pts dans Subtraction Master! Récompense: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Partager',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} a atteint l\'objectif avec {score}pts dans Subtraction Master! Récompense: {reward}',
     adPopupTitle: 'Continuer à Jouer',
-    adPopupMsg: 'Vous avez joué 3 fois!<br>Regardez une pub ou achetez la version sans pub.',
-    watchAd: '📺 Voir la pub pour continuer',
-    removeAds: '💎 Supprimer les pubs (acheter)',
+    adPopupMsg: 'Vous avez joué 3 fois!<br>Regardez une pub ou<br>achetez la version sans pub.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Voir la pub pour continuer',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Supprimer les pubs (acheter)',
     adFree: 'Sans pub',
   },
   de: {
@@ -1032,7 +1107,7 @@ const LANG = {
     start: 'Spiel Starten',
     howTo: 'Anleitung',
     ranking: 'Rangliste',
-    goal: '🎁 Ziel setzen',
+    goal: '<img src="icon-reward.png" class="icon"> Ziel setzen',
     enterName: 'Name eingeben',
     namePlaceholder: 'Name',
     go: 'Start',
@@ -1043,23 +1118,23 @@ const LANG = {
     congrats: 'Glückwunsch!',
     gameOver: 'Spiel Vorbei',
     yourScore: ' - Punkte',
-    newBest: '🎉 Neuer Rekord!',
+    newBest: '<img src="icon-victory.png" class="icon"> Neuer Rekord!',
     correct: 'Richtig',
     accuracy: 'Genauigkeit',
     retry: 'Nochmal',
     back: 'Zurück',
     noRecords: 'Noch keine Rekorde',
-    modalTitle: '🎮 Anleitung',
+    modalTitle: '<img src="icon-game.png" class="icon"> Anleitung',
     modalText: `<strong>📌 Regeln</strong><br>• 3 Runden, je 10 Fragen<br>• Jede Runde wird schwieriger!<br>• Fehler oder Zeit vorbei = Spiel Ende<br><br><strong>📊 Schwierigkeit pro Runde</strong><br>• Runde 1: 3-9 abziehen (ab 100)<br>• Runde 2: 11-19 abziehen (ab 100)<br>• Runde 3: 21-29 abziehen (ab 200)<br><br><strong>⏱️ Zeitbonus</strong><br>• <span class="gold">In 2s: +20Pkt</span><br>• In 4s: +15Pkt<br>• Sonst: +10Pkt`,
     modalClose: 'OK',
     msg1: '🔥 Legendär!',
-    msg2: '⭐ Unglaublich!',
+    msg2: '<img src="icon-goal.png" class="icon"> Unglaublich!',
     msg3: '👏 Sehr gut!',
     msg4: '👍 Gut!',
     r1: '−3~9 | Ab 100',
     r2: '−11~19 | Ab 100',
     r3: '−21~29 | Ab 200',
-    goalTitle: '🎁 Ziel Setzen',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Ziel Setzen',
     goalType: 'Zieltyp',
     goalScore: 'Punkte Erreichen',
     goalBeat: 'Jemanden Schlagen',
@@ -1067,32 +1142,32 @@ const LANG = {
     targetName: 'Wen Schlagen',
     targetNamePh: 'z.B. Papa',
     theirScore: 'Deren Punkte',
-    reward: '🎁 Belohnung',
+    reward: '<img src="icon-reward.png" class="icon"> Belohnung',
     rewardPh: 'z.B. Eis, Spielzeug...',
     saveGoal: 'Speichern',
     deleteGoal: 'Löschen',
-    currentGoal: '🎯 Ziel',
+    currentGoal: ' Ziel',
     beatGoal: '{name} schlagen ({score}Pkt)',
     scoreGoal: '{score}Pkt erreichen',
     rewardLabel: 'Belohnung: {reward}',
-    goalAchieved: '🎉 Ziel Erreicht!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Hol dir deine Belohnung!',
-    goalNotYet: '😢 Knapp!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Knapp!',
     tryAgain: 'Versuch es nochmal!',
     needed: 'Brauchst: {score}Pkt',
-    home: '🏠 Start',
+    home: '<img src="icon-home.png" class="icon"> Start',
     practice: 'Übungsmodus',
     practiceResult: 'Übungsergebnis',
     practiceCorrect: 'Richtig',
     practiceWrong: 'Falsch',
     quit: 'Beenden',
     continue: 'Weiter',
-    share: '📤 Teilen',
-    shareMsg: '🎉 {name} hat das Ziel mit {score}Pkt in Subtraction Master erreicht! Belohnung: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Teilen',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} hat das Ziel mit {score}Pkt in Subtraction Master erreicht! Belohnung: {reward}',
     adPopupTitle: 'Weiterspielen',
-    adPopupMsg: 'Du hast 3 Mal gespielt!<br>Schau eine Werbung oder kaufe die werbefreie Version.',
-    watchAd: '📺 Werbung ansehen zum Fortfahren',
-    removeAds: '💎 Werbung entfernen (kaufen)',
+    adPopupMsg: 'Du hast 3 Mal gespielt!<br>Schau eine Werbung oder<br>kaufe die werbefreie Version.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Werbung ansehen zum Fortfahren',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Werbung entfernen (kaufen)',
     adFree: 'Werbefrei',
   },
   id: {
@@ -1103,7 +1178,7 @@ const LANG = {
     start: 'Mulai',
     howTo: 'Cara Bermain',
     ranking: 'Peringkat',
-    goal: '🎁 Atur Target',
+    goal: '<img src="icon-reward.png" class="icon"> Atur Target',
     enterName: 'Masukkan nama',
     namePlaceholder: 'Nama',
     go: 'Main',
@@ -1114,23 +1189,23 @@ const LANG = {
     congrats: 'Selamat!',
     gameOver: 'Game Over',
     yourScore: ' - Skor',
-    newBest: '🎉 Rekor Baru!',
+    newBest: '<img src="icon-victory.png" class="icon"> Rekor Baru!',
     correct: 'Benar',
     accuracy: 'Akurasi',
     retry: 'Ulangi',
     back: 'Kembali',
     noRecords: 'Belum ada rekor',
-    modalTitle: '🎮 Cara Bermain',
+    modalTitle: '<img src="icon-game.png" class="icon"> Cara Bermain',
     modalText: `<strong>📌 Aturan</strong><br>• 3 ronde, masing-masing 10 soal<br>• Setiap ronde lebih sulit!<br>• Salah atau waktu habis = game over<br><br><strong>📊 Tingkat Kesulitan</strong><br>• Ronde 1: Kurangi 3-9 (dari 100)<br>• Ronde 2: Kurangi 11-19 (dari 100)<br>• Ronde 3: Kurangi 21-29 (dari 200)<br><br><strong>⏱️ Bonus Waktu</strong><br>• <span class="gold">Dalam 2d: +20poin</span><br>• Dalam 4d: +15poin<br>• Lainnya: +10poin`,
     modalClose: 'OK',
     msg1: '🔥 Legendaris!',
-    msg2: '⭐ Luar Biasa!',
+    msg2: '<img src="icon-goal.png" class="icon"> Luar Biasa!',
     msg3: '👏 Bagus Sekali!',
     msg4: '👍 Bagus!',
     r1: '−3~9 | Dari 100',
     r2: '−11~19 | Dari 100',
     r3: '−21~29 | Dari 200',
-    goalTitle: '🎁 Atur Target',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Atur Target',
     goalType: 'Jenis Target',
     goalScore: 'Capai Skor',
     goalBeat: 'Kalahkan Seseorang',
@@ -1138,32 +1213,32 @@ const LANG = {
     targetName: 'Siapa yang Dikalahkan',
     targetNamePh: 'Cth: Ayah',
     theirScore: 'Skor Mereka',
-    reward: '🎁 Hadiah',
+    reward: '<img src="icon-reward.png" class="icon"> Hadiah',
     rewardPh: 'Cth: Es krim, mainan...',
     saveGoal: 'Simpan',
     deleteGoal: 'Hapus',
-    currentGoal: '🎯 Target',
+    currentGoal: ' Target',
     beatGoal: 'Kalahkan {name} ({score}poin)',
     scoreGoal: 'Capai {score}poin',
     rewardLabel: 'Hadiah: {reward}',
-    goalAchieved: '🎉 Target Tercapai!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Ambil hadiahmu!',
-    goalNotYet: '😢 Belum berhasil!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Belum berhasil!',
     tryAgain: 'Coba lagi!',
     needed: 'Perlu: {score}poin',
-    home: '🏠 Beranda',
+    home: '<img src="icon-home.png" class="icon"> Beranda',
     practice: 'Mode Latihan',
     practiceResult: 'Hasil Latihan',
     practiceCorrect: 'Benar',
     practiceWrong: 'Salah',
     quit: 'Keluar',
     continue: 'Lanjut',
-    share: '📤 Bagikan',
-    shareMsg: '🎉 {name} mencapai target dengan {score}poin di Subtraction Master! Hadiah: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Bagikan',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} mencapai target dengan {score}poin di Subtraction Master! Hadiah: {reward}',
     adPopupTitle: 'Lanjut Bermain',
-    adPopupMsg: 'Kamu sudah main 3 kali!<br>Tonton iklan atau beli versi bebas iklan.',
-    watchAd: '📺 Tonton iklan untuk lanjut',
-    removeAds: '💎 Hapus iklan (beli)',
+    adPopupMsg: 'Kamu sudah main 3 kali!<br>Tonton iklan atau<br>beli versi bebas iklan.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Tonton iklan untuk lanjut',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Hapus iklan (beli)',
     adFree: 'Tanpa iklan',
   },
   pt: {
@@ -1174,7 +1249,7 @@ const LANG = {
     start: 'Iniciar',
     howTo: 'Como Jogar',
     ranking: 'Ranking',
-    goal: '🎁 Meta',
+    goal: '<img src="icon-reward.png" class="icon"> Meta',
     enterName: 'Digite seu nome',
     namePlaceholder: 'Nome',
     go: 'Jogar',
@@ -1185,23 +1260,23 @@ const LANG = {
     congrats: 'Parabéns!',
     gameOver: 'Fim de Jogo',
     yourScore: ' - Pontuação',
-    newBest: '🎉 Novo Recorde!',
+    newBest: '<img src="icon-victory.png" class="icon"> Novo Recorde!',
     correct: 'Corretas',
     accuracy: 'Precisão',
     retry: 'Tentar Novamente',
     back: 'Voltar',
     noRecords: 'Sem recordes ainda',
-    modalTitle: '🎮 Como Jogar',
+    modalTitle: '<img src="icon-game.png" class="icon"> Como Jogar',
     modalText: `<strong>📌 Regras</strong><br>• 3 rodadas, 10 questões cada<br>• Cada rodada é mais difícil!<br>• Errar ou tempo esgotado = fim<br><br><strong>📊 Dificuldade</strong><br>• Rodada 1: Subtrair 3-9 (de 100)<br>• Rodada 2: Subtrair 11-19 (de 100)<br>• Rodada 3: Subtrair 21-29 (de 200)<br><br><strong>⏱️ Bônus</strong><br>• <span class="gold">Até 2s: +20pts</span><br>• Até 4s: +15pts<br>• Outros: +10pts`,
     modalClose: 'OK',
     msg1: '🔥 Lendário!',
-    msg2: '⭐ Incrível!',
+    msg2: '<img src="icon-goal.png" class="icon"> Incrível!',
     msg3: '👏 Muito Bom!',
     msg4: '👍 Bom!',
     r1: '−3~9 | De 100',
     r2: '−11~19 | De 100',
     r3: '−21~29 | De 200',
-    goalTitle: '🎁 Definir Meta',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Definir Meta',
     goalType: 'Tipo de Meta',
     goalScore: 'Alcançar Pontos',
     goalBeat: 'Vencer Alguém',
@@ -1209,32 +1284,32 @@ const LANG = {
     targetName: 'Quem Vencer',
     targetNamePh: 'Ex: Papai',
     theirScore: 'Pontos Deles',
-    reward: '🎁 Recompensa',
+    reward: '<img src="icon-reward.png" class="icon"> Recompensa',
     rewardPh: 'Ex: Sorvete, brinquedo...',
     saveGoal: 'Salvar',
     deleteGoal: 'Excluir',
-    currentGoal: '🎯 Meta Atual',
+    currentGoal: ' Meta Atual',
     beatGoal: 'Vencer {name} ({score}pts)',
     scoreGoal: 'Alcançar {score}pts',
     rewardLabel: 'Recompensa: {reward}',
-    goalAchieved: '🎉 Meta Alcançada!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Pegue sua recompensa!',
-    goalNotYet: '😢 Ainda não!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Ainda não!',
     tryAgain: 'Tente novamente!',
     needed: 'Necessário: {score}pts',
-    home: '🏠 Início',
+    home: '<img src="icon-home.png" class="icon"> Início',
     practice: 'Modo Treino',
     practiceResult: 'Resultado do Treino',
     practiceCorrect: 'Corretas',
     practiceWrong: 'Erradas',
     quit: 'Sair',
     continue: 'Continuar',
-    share: '📤 Compartilhar',
-    shareMsg: '🎉 {name} alcançou a meta com {score}pts no Mestre da Subtração! Recompensa: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Compartilhar',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} alcançou a meta com {score}pts no Mestre da Subtração! Recompensa: {reward}',
     adPopupTitle: 'Continuar Jogando',
-    adPopupMsg: 'Você já jogou 3 vezes!<br>Assista um anúncio ou compre a versão sem anúncios.',
-    watchAd: '📺 Ver anúncio para continuar',
-    removeAds: '💎 Remover anúncios (comprar)',
+    adPopupMsg: 'Você já jogou 3 vezes!<br>Assista um anúncio ou<br>compre a versão sem anúncios.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Ver anúncio para continuar',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Remover anúncios (comprar)',
     adFree: 'Sem anúncios',
   },
   ru: {
@@ -1245,7 +1320,7 @@ const LANG = {
     start: 'Старт',
     howTo: 'Правила',
     ranking: 'Рейтинг',
-    goal: '🎁 Цель',
+    goal: '<img src="icon-reward.png" class="icon"> Цель',
     enterName: 'Введите имя',
     namePlaceholder: 'Имя',
     go: 'Играть',
@@ -1256,23 +1331,23 @@ const LANG = {
     congrats: 'Поздравляем!',
     gameOver: 'Игра окончена',
     yourScore: ' - Счёт',
-    newBest: '🎉 Новый рекорд!',
+    newBest: '<img src="icon-victory.png" class="icon"> Новый рекорд!',
     correct: 'Верно',
     accuracy: 'Точность',
     retry: 'Ещё раз',
     back: 'Назад',
     noRecords: 'Рекордов пока нет',
-    modalTitle: '🎮 Правила игры',
+    modalTitle: '<img src="icon-game.png" class="icon"> Правила игры',
     modalText: `<strong>📌 Правила</strong><br>• 3 раунда по 10 вопросов<br>• Каждый раунд сложнее!<br>• Ошибка или время = конец<br><br><strong>📊 Сложность</strong><br>• Раунд 1: Вычесть 3-9 (из 100)<br>• Раунд 2: Вычесть 11-19 (из 100)<br>• Раунд 3: Вычесть 21-29 (из 200)<br><br><strong>⏱️ Бонус</strong><br>• <span class="gold">До 2с: +20очк</span><br>• До 4с: +15очк<br>• Иначе: +10очк`,
     modalClose: 'OK',
     msg1: '🔥 Легенда!',
-    msg2: '⭐ Потрясающе!',
+    msg2: '<img src="icon-goal.png" class="icon"> Потрясающе!',
     msg3: '👏 Отлично!',
     msg4: '👍 Хорошо!',
     r1: '−3~9 | Из 100',
     r2: '−11~19 | Из 100',
     r3: '−21~29 | Из 200',
-    goalTitle: '🎁 Установить цель',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Установить цель',
     goalType: 'Тип цели',
     goalScore: 'Набрать очки',
     goalBeat: 'Победить кого-то',
@@ -1280,32 +1355,32 @@ const LANG = {
     targetName: 'Кого победить',
     targetNamePh: 'Напр: Папа',
     theirScore: 'Их счёт',
-    reward: '🎁 Награда',
+    reward: '<img src="icon-reward.png" class="icon"> Награда',
     rewardPh: 'Напр: Мороженое...',
     saveGoal: 'Сохранить',
     deleteGoal: 'Удалить',
-    currentGoal: '🎯 Текущая цель',
+    currentGoal: ' Текущая цель',
     beatGoal: 'Победить {name} ({score}очк)',
     scoreGoal: 'Набрать {score}очк',
     rewardLabel: 'Награда: {reward}',
-    goalAchieved: '🎉 Цель достигнута!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Получи награду!',
-    goalNotYet: '😢 Пока нет!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Пока нет!',
     tryAgain: 'Попробуй ещё!',
     needed: 'Нужно: {score}очк',
-    home: '🏠 Домой',
+    home: '<img src="icon-home.png" class="icon"> Домой',
     practice: 'Тренировка',
     practiceResult: 'Результат тренировки',
     practiceCorrect: 'Верно',
     practiceWrong: 'Неверно',
     quit: 'Выход',
     continue: 'Продолжить',
-    share: '📤 Поделиться',
-    shareMsg: '🎉 {name} достиг цели с {score}очк в Мастере Вычитания! Награда: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Поделиться',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} достиг цели с {score}очк в Мастере Вычитания! Награда: {reward}',
     adPopupTitle: 'Продолжить игру',
-    adPopupMsg: 'Вы сыграли 3 раза!<br>Посмотрите рекламу или купите версию без рекламы.',
-    watchAd: '📺 Смотреть рекламу',
-    removeAds: '💎 Убрать рекламу (купить)',
+    adPopupMsg: 'Вы сыграли 3 раза!<br>Посмотрите рекламу или<br>купите версию без рекламы.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Смотреть рекламу',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Убрать рекламу (купить)',
     adFree: 'Без рекламы',
   },
   th: {
@@ -1316,7 +1391,7 @@ const LANG = {
     start: 'เริ่มเกม',
     howTo: 'วิธีเล่น',
     ranking: 'อันดับ',
-    goal: '🎁 ตั้งเป้า',
+    goal: '<img src="icon-reward.png" class="icon"> ตั้งเป้า',
     enterName: 'ใส่ชื่อของคุณ',
     namePlaceholder: 'ชื่อ',
     go: 'เล่น',
@@ -1327,23 +1402,23 @@ const LANG = {
     congrats: 'ยินดีด้วย!',
     gameOver: 'จบเกม',
     yourScore: ' - คะแนน',
-    newBest: '🎉 สถิติใหม่!',
+    newBest: '<img src="icon-victory.png" class="icon"> สถิติใหม่!',
     correct: 'ถูก',
     accuracy: 'ความแม่นยำ',
     retry: 'เล่นอีก',
     back: 'กลับ',
     noRecords: 'ยังไม่มีสถิติ',
-    modalTitle: '🎮 วิธีเล่น',
+    modalTitle: '<img src="icon-game.png" class="icon"> วิธีเล่น',
     modalText: `<strong>📌 กฎ</strong><br>• 3 รอบ รอบละ 10 ข้อ<br>• แต่ละรอบยากขึ้น!<br>• ผิดหรือหมดเวลา = จบ<br><br><strong>📊 ระดับความยาก</strong><br>• รอบ 1: ลบ 3-9 (จาก 100)<br>• รอบ 2: ลบ 11-19 (จาก 100)<br>• รอบ 3: ลบ 21-29 (จาก 200)<br><br><strong>⏱️ โบนัส</strong><br>• <span class="gold">ใน 2วิ: +20คะแนน</span><br>• ใน 4วิ: +15คะแนน<br>• อื่นๆ: +10คะแนน`,
     modalClose: 'ตกลง',
     msg1: '🔥 ระดับตำนาน!',
-    msg2: '⭐ เยี่ยมมาก!',
+    msg2: '<img src="icon-goal.png" class="icon"> เยี่ยมมาก!',
     msg3: '👏 ดีมาก!',
     msg4: '👍 ดี!',
     r1: '−3~9 | จาก 100',
     r2: '−11~19 | จาก 100',
     r3: '−21~29 | จาก 200',
-    goalTitle: '🎁 ตั้งเป้าหมาย',
+    goalTitle: '<img src="icon-reward.png" class="icon"> ตั้งเป้าหมาย',
     goalType: 'ประเภทเป้าหมาย',
     goalScore: 'ทำคะแนนให้ได้',
     goalBeat: 'เอาชนะใครสักคน',
@@ -1351,32 +1426,32 @@ const LANG = {
     targetName: 'ชื่อคู่แข่ง',
     targetNamePh: 'เช่น: พ่อ',
     theirScore: 'คะแนนเขา',
-    reward: '🎁 รางวัล',
+    reward: '<img src="icon-reward.png" class="icon"> รางวัล',
     rewardPh: 'เช่น: ไอติม, ของเล่น...',
     saveGoal: 'บันทึก',
     deleteGoal: 'ลบ',
-    currentGoal: '🎯 เป้าหมาย',
+    currentGoal: ' เป้าหมาย',
     beatGoal: 'เอาชนะ {name} ({score}คะแนน)',
     scoreGoal: 'ทำ {score}คะแนน',
     rewardLabel: 'รางวัล: {reward}',
-    goalAchieved: '🎉 ทำได้แล้ว!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'รับรางวัลเลย!',
-    goalNotYet: '😢 ยังไม่ถึง!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> ยังไม่ถึง!',
     tryAgain: 'ลองอีกครั้ง!',
     needed: 'ต้องการ: {score}คะแนน',
-    home: '🏠 หน้าหลัก',
+    home: '<img src="icon-home.png" class="icon"> หน้าหลัก',
     practice: 'โหมดฝึกซ้อม',
     practiceResult: 'ผลการฝึก',
     practiceCorrect: 'ถูก',
     practiceWrong: 'ผิด',
     quit: 'ออก',
     continue: 'ต่อ',
-    share: '📤 แชร์',
-    shareMsg: '🎉 {name} ทำเป้าได้ {score}คะแนน ใน เซียนลบเลข! รางวัล: {reward}',
+    share: '<img src="icon-share.png" class="icon"> แชร์',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} ทำเป้าได้ {score}คะแนน ใน เซียนลบเลข! รางวัล: {reward}',
     adPopupTitle: 'เล่นต่อ',
-    adPopupMsg: 'คุณเล่นไป 3 ครั้งแล้ว!<br>ดูโฆษณาหรือซื้อเวอร์ชันไม่มีโฆษณา',
-    watchAd: '📺 ดูโฆษณาเพื่อเล่นต่อ',
-    removeAds: '💎 ลบโฆษณา (ซื้อ)',
+    adPopupMsg: 'คุณเล่นไป 3 ครั้งแล้ว!<br>ดูโฆษณาหรือ<br>ซื้อเวอร์ชันไม่มีโฆษณา',
+    watchAd: '<img src="icon-tv.png" class="icon"> ดูโฆษณาเพื่อเล่นต่อ',
+    removeAds: '<img src="icon-diamond.png" class="icon"> ลบโฆษณา (ซื้อ)',
     adFree: 'ไม่มีโฆษณา',
   },
   tr: {
@@ -1387,7 +1462,7 @@ const LANG = {
     start: 'Başla',
     howTo: 'Nasıl Oynanır',
     ranking: 'Sıralama',
-    goal: '🎁 Hedef',
+    goal: '<img src="icon-reward.png" class="icon"> Hedef',
     enterName: 'Adınızı girin',
     namePlaceholder: 'Ad',
     go: 'Oyna',
@@ -1398,23 +1473,23 @@ const LANG = {
     congrats: 'Tebrikler!',
     gameOver: 'Oyun Bitti',
     yourScore: ' - Puan',
-    newBest: '🎉 Yeni Rekor!',
+    newBest: '<img src="icon-victory.png" class="icon"> Yeni Rekor!',
     correct: 'Doğru',
     accuracy: 'İsabet',
     retry: 'Tekrar',
     back: 'Geri',
     noRecords: 'Henüz rekor yok',
-    modalTitle: '🎮 Nasıl Oynanır',
+    modalTitle: '<img src="icon-game.png" class="icon"> Nasıl Oynanır',
     modalText: `<strong>📌 Kurallar</strong><br>• 3 tur, her biri 10 soru<br>• Her tur daha zor!<br>• Yanlış veya süre = bitti<br><br><strong>📊 Zorluk</strong><br>• Tur 1: 3-9 çıkar (100'den)<br>• Tur 2: 11-19 çıkar (100'den)<br>• Tur 3: 21-29 çıkar (200'den)<br><br><strong>⏱️ Bonus</strong><br>• <span class="gold">2sn içinde: +20puan</span><br>• 4sn içinde: +15puan<br>• Diğer: +10puan`,
     modalClose: 'Tamam',
     msg1: '🔥 Efsane!',
-    msg2: '⭐ Harika!',
+    msg2: '<img src="icon-goal.png" class="icon"> Harika!',
     msg3: '👏 Çok İyi!',
     msg4: '👍 İyi!',
     r1: '−3~9 | 100\'den',
     r2: '−11~19 | 100\'den',
     r3: '−21~29 | 200\'den',
-    goalTitle: '🎁 Hedef Belirle',
+    goalTitle: '<img src="icon-reward.png" class="icon"> Hedef Belirle',
     goalType: 'Hedef Türü',
     goalScore: 'Puana Ulaş',
     goalBeat: 'Birini Yen',
@@ -1422,32 +1497,32 @@ const LANG = {
     targetName: 'Kimi Yeneceksin',
     targetNamePh: 'Örn: Baba',
     theirScore: 'Onların Puanı',
-    reward: '🎁 Ödül',
+    reward: '<img src="icon-reward.png" class="icon"> Ödül',
     rewardPh: 'Örn: Dondurma...',
     saveGoal: 'Kaydet',
     deleteGoal: 'Sil',
-    currentGoal: '🎯 Hedef',
+    currentGoal: ' Hedef',
     beatGoal: '{name} yen ({score}puan)',
     scoreGoal: '{score}puana ulaş',
     rewardLabel: 'Ödül: {reward}',
-    goalAchieved: '🎉 Hedefe Ulaştın!',
+    goalAchieved: '🎉 목표 달성! 🎉',
     getReward: 'Ödülünü al!',
-    goalNotYet: '😢 Henüz değil!',
+    goalNotYet: '<img src="icon-gameover.png" class="icon"> Henüz değil!',
     tryAgain: 'Tekrar dene!',
     needed: 'Gereken: {score}puan',
-    home: '🏠 Ana Sayfa',
+    home: '<img src="icon-home.png" class="icon"> Ana Sayfa',
     practice: 'Pratik Modu',
     practiceResult: 'Pratik Sonucu',
     practiceCorrect: 'Doğru',
     practiceWrong: 'Yanlış',
     quit: 'Çık',
     continue: 'Devam',
-    share: '📤 Paylaş',
-    shareMsg: '🎉 {name} Çıkarma Ustası\'nda {score}puan ile hedefe ulaştı! Ödül: {reward}',
+    share: '<img src="icon-share.png" class="icon"> Paylaş',
+    shareMsg: '<img src="icon-victory.png" class="icon"> {name} Çıkarma Ustası\'nda {score}puan ile hedefe ulaştı! Ödül: {reward}',
     adPopupTitle: 'Oynamaya Devam Et',
-    adPopupMsg: '3 kez oynadınız!<br>Reklam izleyin veya reklamsız sürümü satın alın.',
-    watchAd: '📺 Reklam izle ve devam et',
-    removeAds: '💎 Reklamları kaldır (satın al)',
+    adPopupMsg: '3 kez oynadınız!<br>Reklam izleyin veya<br>reklamsız sürümü satın alın.',
+    watchAd: '<img src="icon-tv.png" class="icon"> Reklam izle ve devam et',
+    removeAds: '<img src="icon-diamond.png" class="icon"> Reklamları kaldır (satın al)',
     adFree: 'Reklamsız',
   }
 };
@@ -1476,8 +1551,8 @@ function setLang(lang) {
   document.getElementById('btnPractice').textContent = L.practice;
   document.getElementById('btnQuit').textContent = L.quit;
   document.getElementById('btnHow').textContent = L.howTo;
-  document.getElementById('btnGoal').textContent = L.goal;
-  document.getElementById('btnRankTitle').textContent = '🏆 ' + L.ranking;
+  document.getElementById('btnGoal').innerHTML = L.goal;
+  document.getElementById('btnRankTitle').innerHTML = '<img src="icon-record.png" class="icon"> ' + L.ranking;
   document.getElementById('nameLabel').textContent = L.enterName;
   document.getElementById('nameInput').placeholder = L.namePlaceholder;
   document.getElementById('btnGo').textContent = L.go;
@@ -1485,15 +1560,15 @@ function setLang(lang) {
   document.getElementById('questionLabel').textContent = L.question;
   document.getElementById('scorePts').textContent = L.pts;
   document.getElementById('btnRetry').textContent = L.retry;
-  document.getElementById('btnRankResult').textContent = '🏆 ' + L.ranking;
-  document.getElementById('boardTitle').textContent = '🏆 ' + L.ranking;
+  document.getElementById('btnRankResult').innerHTML = '<img src="icon-record.png" class="icon"> ' + L.ranking;
+  document.getElementById('boardTitle').innerHTML = '<img src="icon-record.png" class="icon"> ' + L.ranking;
   document.getElementById('btnBack').textContent = L.back;
-  document.getElementById('modalTitle').textContent = L.modalTitle;
+  document.getElementById('modalTitle').innerHTML = L.modalTitle;
   document.getElementById('modalText').innerHTML = L.modalText;
   document.getElementById('modalClose').textContent = L.modalClose;
   
   // 목표 모달
-  document.getElementById('goalModalTitle').textContent = L.goalTitle;
+  document.getElementById('goalModalTitle').innerHTML = L.goalTitle;
   document.getElementById('goalTypeLabel').textContent = L.goalType;
   document.getElementById('optScore').textContent = L.goalScore;
   document.getElementById('optBeat').textContent = L.goalBeat;
@@ -1501,15 +1576,15 @@ function setLang(lang) {
   document.getElementById('targetNameLabel').textContent = L.targetName;
   document.getElementById('targetName').placeholder = L.targetNamePh;
   document.getElementById('theirScoreLabel').textContent = L.theirScore;
-  document.getElementById('rewardLabel').textContent = L.reward;
+  document.getElementById('rewardLabel').innerHTML = L.reward;
   document.getElementById('rewardInput').placeholder = L.rewardPh;
   document.getElementById('btnSaveGoal').textContent = L.saveGoal;
   document.getElementById('btnDeleteGoal').textContent = L.deleteGoal;
   
   
   // 홈 버튼
-  document.getElementById('btnHomeName').textContent = L.home;
-  document.getElementById('btnHomeResult').textContent = L.home;
+  document.getElementById('btnHomeName').innerHTML = L.home;
+  document.getElementById('btnHomeResult').innerHTML = L.home;
   
   updateGoalDisplay();
 }
@@ -1721,10 +1796,10 @@ function updateGoalDisplay() {
     } else {
       targetText = L.scoreGoal.replace('{score}', goalData.targetScore);
     }
-    document.getElementById('goalTarget').textContent = L.currentGoal + ': ' + targetText;
+    document.getElementById('goalTarget').innerHTML = L.currentGoal + ': ' + targetText;
 
     if (goalData.reward) {
-      document.getElementById('goalReward').textContent = L.rewardLabel.replace('{reward}', goalData.reward);
+      document.getElementById('goalReward').innerHTML = L.rewardLabel.replace('{reward}', goalData.reward);
       document.getElementById('goalReward').classList.remove('hidden');
     } else {
       document.getElementById('goalReward').classList.add('hidden');
@@ -1788,11 +1863,11 @@ function showGoalCelebration() {
   // 축하 텍스트
   const text = document.createElement('div');
   text.className = 'celebration-text';
-  text.innerHTML = '🎉 ' + LANG[currentLang].goalAchieved + ' 🎉';
+  text.innerHTML = '<img src="icon-victory.png" class="icon"> ' + LANG[currentLang].goalAchieved + ' <img src="icon-victory.png" class="icon">';
   
   // 보상이 있으면 보상도 표시
   if (goalData && goalData.reward) {
-    text.innerHTML += '<div class="celebration-reward">🎁 ' + goalData.reward + '</div>';
+    // reward removed from animation
   }
   
   celebration.appendChild(text);
@@ -1882,6 +1957,7 @@ function updateTimer() {
   if (remaining <= 0) {
     gameRunning = false;
     playWrong();
+    vibrate();
     if (isPracticeMode) {
       practiceWrong++;
       setTimeout(nextQuestion, 600);
@@ -2034,7 +2110,7 @@ function startGame() {
   subtractNum = getNewSubtractNum();
 
   // 플레이어 이름 표시
-  document.getElementById('playerDisplay').textContent = '🎮 ' + playerName;
+  document.getElementById('playerDisplay').innerHTML = '<img src="icon-game.png" class="icon"> ' + playerName;
 
   // 연습모드에서는 점수판 숨김, 그만두기 버튼 표시
   if (isPracticeMode) {
@@ -2125,6 +2201,7 @@ function selectAnswer(idx) {
     setTimeout(nextQuestion, 500);
   } else {
     playWrong();
+    vibrate();
     wrongAnswerIdx = idx;
     wrongAnswerSelected = selected;
     if (isPracticeMode) {
@@ -2224,7 +2301,7 @@ function endGame(won) {
     }
   }
 
-  document.getElementById('resultEmoji').textContent = won ? '🎉' : '😢';
+  document.getElementById('resultEmoji').innerHTML = won ? '<img src="icon-victory.png" class="icon">' : '<img src="icon-gameover.png" class="icon">';
   document.getElementById('resultTitle').textContent = won ? L.congrats : L.gameOver;
   document.getElementById('resultTitle').className = 'result-title ' + (won ? 'win' : 'lose');
   document.getElementById('resultName').textContent = playerName;
@@ -2232,7 +2309,7 @@ function endGame(won) {
   document.getElementById('resultScore').textContent = score + L.pts;
 
   if (isNewBest && score > 0) {
-    document.getElementById('resultBest').textContent = L.newBest;
+    document.getElementById('resultBest').innerHTML = L.newBest;
     document.getElementById('resultBest').classList.remove('hidden');
   } else {
     document.getElementById('resultBest').classList.add('hidden');
@@ -2247,19 +2324,19 @@ function endGame(won) {
   if (goalAchieved === true) {
     goalResult.classList.remove('hidden', 'goal-failed');
     goalResult.classList.add('goal-achieved');
-    document.getElementById('goalResultTitle').textContent = L.goalAchieved;
-    document.getElementById('goalResultName').textContent = '🏆 ' + playerName;
-    document.getElementById('goalResultReward').textContent = '🎁 ' + (goalData.reward || '');
+    document.getElementById('goalResultTitle').innerHTML = L.goalAchieved;
+    document.getElementById('goalResultName').innerHTML = '<img src="icon-record.png" class="icon"> ' + playerName;
+    document.getElementById('goalResultReward').innerHTML = '<img src="icon-reward.png" class="icon"> ' + (goalData.reward || '');
     document.getElementById('goalResultReward').classList.toggle('hidden', !goalData.reward);
-    document.getElementById('goalResultSub').textContent = L.getReward;
+    document.getElementById('goalResultSub').innerHTML = L.getReward;
     document.getElementById('btnShare').classList.remove('hidden');
-    document.getElementById('btnShare').textContent = L.share;
+    document.getElementById('btnShare').innerHTML = L.share;
   } else if (goalAchieved === false) {
     goalResult.classList.remove('hidden', 'goal-achieved');
     goalResult.classList.add('goal-failed');
-    document.getElementById('goalResultTitle').textContent = L.goalNotYet;
+    document.getElementById('goalResultTitle').innerHTML = L.goalNotYet;
     document.getElementById('goalResultReward').classList.add('hidden');
-    document.getElementById('goalResultSub').textContent = L.needed.replace('{score}', goalData.targetScore) + L.pts + ' | ' + L.tryAgain;
+    document.getElementById('goalResultSub').innerHTML = L.needed.replace('{score}', goalData.targetScore) + L.pts + ' | ' + L.tryAgain;
     document.getElementById('btnShare').classList.add('hidden');
   } else {
     goalResult.classList.add('hidden');
@@ -2300,6 +2377,7 @@ document.addEventListener('visibilitychange', function() {
       if (!answered) {
         if (isPracticeMode) {
           playWrong();
+    vibrate();
           practiceWrong++;
           setTimeout(nextQuestion, 600);
         } else {
@@ -2333,8 +2411,8 @@ function updateAdPopupText() {
   const L = LANG[currentLang];
   document.getElementById('adPopupTitle').textContent = L.adPopupTitle;
   document.getElementById('adPopupMsg').innerHTML = L.adPopupMsg;
-  document.getElementById('btnWatchAd').textContent = L.watchAd;
-  document.getElementById('btnRemoveAds').textContent = L.removeAds;
+  document.getElementById('btnWatchAd').innerHTML = L.watchAd;
+  document.getElementById('btnRemoveAds').innerHTML = L.removeAds;
 }
 
 function showAdPopup() {
