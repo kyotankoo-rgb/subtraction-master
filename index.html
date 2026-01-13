@@ -1709,7 +1709,7 @@ const LANG = {
     quit: 'Çık',
     continue: 'Devam',
     share: '<img src="icon-share.png" class="icon"> Paylaş',
-    shareMsg: '{name} Çıkarma Ustası\'nda {score}puan ile hedefe ulaştı! Ödül: {reward}',
+    shareMsg: '🎉 Hedefe ulaşıldı! 🎉\n\n{name} başardı!\n🏆 Çıkarma Ustası {score}puan\n🎁 Ödül: {reward}\n\nOnunla gurur duyun~ 💪',
     adPopupTitle: 'Oynamaya Devam Et',
     adPopupMsg: '5 kez oynadınız!<br>Reklam izleyin veya<br>reklamsız sürümü satın alın.',
     watchAd: '<img src="icon-tv.png" class="icon"> Reklam izle ve devam et',
@@ -2059,7 +2059,7 @@ function updateGoalDisplay() {
 
 function checkGoalAchievement(finalScore) {
   if (!goalData || goalData.targetScore <= 0) return null;
-  return finalScore > goalData.targetScore;
+  return finalScore >= goalData.targetScore;
 }
 
 // 라운드별 배경색 변경
