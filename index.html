@@ -138,7 +138,7 @@
       padding: 20px;
     }
     .modal-content {
-      background: linear-gradient(135deg, #1a1a3a, #0a0a1a);
+      background: linear-gradient(135deg, #1a3a2d, #0a2e1a);
       border-radius: 20px;
       padding: 30px;
       max-width: 350px;
@@ -1978,9 +1978,11 @@ function showGoalModal() {
     if (goalData.type === 'beat') {
       document.getElementById('targetName').value = goalData.targetName || '';
       document.getElementById('theirScore').value = goalData.targetScore || '';
+    } else {
       document.getElementById('targetScore').value = goalData.targetScore || '';
     }
     document.getElementById('rewardInput').value = goalData.reward || '';
+  } else {
     document.getElementById('goalType').value = 'score';
     document.getElementById('targetScore').value = '';
     document.getElementById('targetName').value = '';
@@ -2604,7 +2606,7 @@ function endGame(won) {
     else if (score >= 350) msg = L.msg3;
     else msg = L.msg4;
   }
-  document.getElementById('resultMsg').textContent = msg;
+  document.getElementById('resultMsg').innerHTML = msg;
 
   showScreen('result');
 }
